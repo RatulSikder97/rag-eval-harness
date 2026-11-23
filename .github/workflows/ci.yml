@@ -77,7 +77,7 @@ jobs:
         with:
           enable-cache: true
       - run: uv sync --locked
-      - name: Run golden set (offline: hashing embedder, extractive generator, overlap judge)
+      - name: "Run golden set (offline: hashing embedder, extractive generator, overlap judge)"
         run: uv run rag-eval run --out results/current.json --report results/report.md
       - name: Compare against committed baseline
         run: >-
