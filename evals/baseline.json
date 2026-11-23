@@ -1,0 +1,1331 @@
+{
+  "schema_version": 1,
+  "run": {
+    "created_at": "2026-11-23T19:04:28+00:00",
+    "harness_version": "0.1.0",
+    "git_sha": null,
+    "golden_set": "atlas-handbook-v1",
+    "n_items": 20,
+    "n_answerable": 18,
+    "n_errors": 0,
+    "config": {
+      "embedder": "hashing-512",
+      "chunker": "recursive",
+      "chunk_size": 800,
+      "chunk_overlap": 120,
+      "store": "memory",
+      "mode": "hybrid",
+      "reranker": "none",
+      "top_k": 5,
+      "generator": "fake:extractive",
+      "judge": "fake:overlap",
+      "chunks": 26
+    }
+  },
+  "metrics": {
+    "generation.abstention_accuracy": 0.9,
+    "generation.citation_precision": 0.75,
+    "generation.citation_validity": 1.0,
+    "generation.cited_when_answering": 1.0,
+    "generation.fact_recall": 0.888889,
+    "judge.completeness": 0.888889,
+    "judge.correctness": 0.75,
+    "judge.groundedness": 1.0,
+    "judge.pass_rate": 0.611111,
+    "judge.sanity": 1.0,
+    "retrieval.mrr": 0.916667,
+    "retrieval.ndcg@5": 0.934754,
+    "retrieval.recall@1": 0.805556,
+    "retrieval.recall@3": 0.972222,
+    "retrieval.recall@5": 1.0
+  },
+  "timings": {
+    "generation.p50_ms": 0.045,
+    "generation.p95_ms": 0.066,
+    "judge.p50_ms": 0.037,
+    "judge.p95_ms": 0.045,
+    "retrieval.p50_ms": 0.099,
+    "retrieval.p95_ms": 0.421
+  },
+  "items": [
+    {
+      "id": "sev1-definition",
+      "question": "What counts as a SEV1 incident?",
+      "tags": [
+        "incidents"
+      ],
+      "retrieved": [
+        {
+          "id": "incident-response.md#2",
+          "score": 0.032787
+        },
+        {
+          "id": "incident-response.md#1",
+          "score": 0.032258
+        },
+        {
+          "id": "incident-response.md#0",
+          "score": 0.031498
+        },
+        {
+          "id": "incident-response.md#3",
+          "score": 0.031498
+        },
+        {
+          "id": "backups.md#2",
+          "score": 0.030536
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.421,
+        "generation": 0.066,
+        "judge": 0.045
+      },
+      "answer": {
+        "text": "Every SEV1 and SEV2 incident has exactly one incident commander (IC). SEV1 pages the incident commander and the on-call engineer immediately.",
+        "citations": [
+          "incident-response.md#2",
+          "incident-response.md#1"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 2,
+        "groundedness": 5,
+        "completeness": 2,
+        "passed": false,
+        "rationale": "token f1=0.09, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 0.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 0.5,
+        "retrieval.ndcg@5": 0.63093,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 0.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.25,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 0.25,
+        "judge.pass_rate": 0.0
+      }
+    },
+    {
+      "id": "status-update-cadence",
+      "question": "How often does the communications lead post status updates during an incident?",
+      "tags": [
+        "incidents"
+      ],
+      "retrieved": [
+        {
+          "id": "incident-response.md#2",
+          "score": 0.032787
+        },
+        {
+          "id": "deployments.md#2",
+          "score": 0.032258
+        },
+        {
+          "id": "deployments.md#3",
+          "score": 0.031498
+        },
+        {
+          "id": "incident-response.md#0",
+          "score": 0.031498
+        },
+        {
+          "id": "backups.md#2",
+          "score": 0.030769
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.148,
+        "generation": 0.045,
+        "judge": 0.037
+      },
+      "answer": {
+        "text": "A separate communications lead posts status updates to the #atlas-status channel every 30 minutes until the incident is resolved. Emergency fixes during a freeze require approval from the on-call incident commander.",
+        "citations": [
+          "incident-response.md#2",
+          "deployments.md#2"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 3,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": false,
+        "rationale": "token f1=0.24, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.5,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 0.0
+      }
+    },
+    {
+      "id": "postmortem-deadline",
+      "question": "When is the postmortem draft due after a SEV2 incident?",
+      "tags": [
+        "incidents"
+      ],
+      "retrieved": [
+        {
+          "id": "incident-response.md#3",
+          "score": 0.032787
+        },
+        {
+          "id": "incident-response.md#2",
+          "score": 0.032258
+        },
+        {
+          "id": "incident-response.md#0",
+          "score": 0.031025
+        },
+        {
+          "id": "incident-response.md#1",
+          "score": 0.030798
+        },
+        {
+          "id": "backups.md#2",
+          "score": 0.030331
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.116,
+        "generation": 0.05,
+        "judge": 0.037
+      },
+      "answer": {
+        "text": "A blameless postmortem is required for every SEV1 and SEV2 incident. The draft is due within 5 business days of resolution and is reviewed in the weekly reliability review.",
+        "citations": [
+          "incident-response.md#3"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.67, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "page-escalation",
+      "question": "What happens if the primary on-call engineer does not acknowledge a page?",
+      "tags": [
+        "on-call"
+      ],
+      "retrieved": [
+        {
+          "id": "on-call.md#0",
+          "score": 0.032787
+        },
+        {
+          "id": "on-call.md#2",
+          "score": 0.032258
+        },
+        {
+          "id": "incident-response.md#1",
+          "score": 0.031498
+        },
+        {
+          "id": "on-call.md#1",
+          "score": 0.030798
+        },
+        {
+          "id": "deployments.md#3",
+          "score": 0.030536
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.121,
+        "generation": 0.055,
+        "judge": 0.043
+      },
+      "answer": {
+        "text": "The primary on-call rotation is one week long and hands over every Monday at 10:00 UTC. If the primary does not acknowledge a page within 5 minutes, the page escalates to the secondary, and after a further 10 minutes to the engineering manager.",
+        "citations": [
+          "on-call.md#0"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.57, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "rotation-handover",
+      "question": "When does the on-call rotation hand over?",
+      "tags": [
+        "on-call"
+      ],
+      "retrieved": [
+        {
+          "id": "on-call.md#0",
+          "score": 0.032787
+        },
+        {
+          "id": "on-call.md#1",
+          "score": 0.032258
+        },
+        {
+          "id": "authentication.md#1",
+          "score": 0.031746
+        },
+        {
+          "id": "on-call.md#2",
+          "score": 0.03125
+        },
+        {
+          "id": "deployments.md#2",
+          "score": 0.030536
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.095,
+        "generation": 0.045,
+        "judge": 0.038
+      },
+      "answer": {
+        "text": "The primary on-call rotation is one week long and hands over every Monday at 10:00 UTC. On-call engineers receive a flat stipend per rotation week plus time off in lieu for any page handled between 22:00 and 07:00 local time.",
+        "citations": [
+          "on-call.md#0",
+          "on-call.md#1"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 4,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.42, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.75,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "canary-policy",
+      "question": "How much traffic does a production canary receive and for how long?",
+      "tags": [
+        "deploys"
+      ],
+      "retrieved": [
+        {
+          "id": "deployments.md#1",
+          "score": 0.032787
+        },
+        {
+          "id": "on-call.md#0",
+          "score": 0.032002
+        },
+        {
+          "id": "deployments.md#2",
+          "score": 0.031054
+        },
+        {
+          "id": "on-call.md#1",
+          "score": 0.031025
+        },
+        {
+          "id": "backups.md#2",
+          "score": 0.03031
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.106,
+        "generation": 0.049,
+        "judge": 0.041
+      },
+      "answer": {
+        "text": "Production rollouts start as a canary that receives 5% of traffic for 15 minutes. The canary is promoted automatically if its error rate stays within 0.5 percentage points of the baseline fleet; otherwise it is rolled back without human intervention.",
+        "citations": [
+          "deployments.md#1"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 3,
+        "groundedness": 5,
+        "completeness": 4,
+        "passed": false,
+        "rationale": "token f1=0.33, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.5,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 0.75,
+        "judge.pass_rate": 0.0
+      }
+    },
+    {
+      "id": "deploy-freeze",
+      "question": "When are production deploys frozen?",
+      "tags": [
+        "deploys"
+      ],
+      "retrieved": [
+        {
+          "id": "deployments.md#2",
+          "score": 0.032787
+        },
+        {
+          "id": "deployments.md#0",
+          "score": 0.032258
+        },
+        {
+          "id": "deployments.md#3",
+          "score": 0.031498
+        },
+        {
+          "id": "deployments.md#1",
+          "score": 0.030536
+        },
+        {
+          "id": "on-call.md#2",
+          "score": 0.029206
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.09,
+        "generation": 0.04,
+        "judge": 0.034
+      },
+      "answer": {
+        "text": "Production deploys are frozen from Friday 16:00 UTC until Monday 08:00 UTC, and during company-wide freeze windows announced in #atlas-releases. Production deploys are triggered from the release dashboard and require a green staging smoke test.",
+        "citations": [
+          "deployments.md#2",
+          "deployments.md#0"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.67, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "rollback-approval",
+      "question": "Do I need approval to roll back a production deploy?",
+      "tags": [
+        "deploys"
+      ],
+      "retrieved": [
+        {
+          "id": "deployments.md#3",
+          "score": 0.032787
+        },
+        {
+          "id": "deployments.md#2",
+          "score": 0.032002
+        },
+        {
+          "id": "deployments.md#1",
+          "score": 0.031754
+        },
+        {
+          "id": "feature-flags.md#0",
+          "score": 0.031258
+        },
+        {
+          "id": "backups.md#2",
+          "score": 0.030777
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.102,
+        "generation": 0.041,
+        "judge": 0.033
+      },
+      "answer": {
+        "text": "Any engineer may roll back a production deploy at any time with `atlas deploy rollback <service>`. Rolling back never requires approval; rolling forward during an incident does.",
+        "citations": [
+          "deployments.md#3"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.80, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "flag-expiry",
+      "question": "When do release feature flags expire?",
+      "tags": [
+        "flags"
+      ],
+      "retrieved": [
+        {
+          "id": "feature-flags.md#1",
+          "score": 0.032787
+        },
+        {
+          "id": "feature-flags.md#0",
+          "score": 0.032258
+        },
+        {
+          "id": "deployments.md#0",
+          "score": 0.031746
+        },
+        {
+          "id": "incident-response.md#1",
+          "score": 0.030536
+        },
+        {
+          "id": "feature-flags.md#2",
+          "score": 0.02971
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.091,
+        "generation": 0.054,
+        "judge": 0.043
+      },
+      "answer": {
+        "text": "Release flags expire 30 days after they reach 100% rollout, and the flag service opens a cleanup ticket for the owner on expiry. Permanent operational flags, such as kill switches, must be tagged `ops` and are exempt from expiry.",
+        "citations": [
+          "feature-flags.md#1"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.58, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "flag-ramp",
+      "question": "What is the recommended feature flag rollout ramp?",
+      "tags": [
+        "flags"
+      ],
+      "retrieved": [
+        {
+          "id": "feature-flags.md#0",
+          "score": 0.032522
+        },
+        {
+          "id": "feature-flags.md#2",
+          "score": 0.032522
+        },
+        {
+          "id": "feature-flags.md#1",
+          "score": 0.031746
+        },
+        {
+          "id": "incident-response.md#1",
+          "score": 0.03125
+        },
+        {
+          "id": "incident-response.md#2",
+          "score": 0.015385
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.096,
+        "generation": 0.051,
+        "judge": 0.041
+      },
+      "answer": {
+        "text": "Any user-visible change that cannot be safely rolled back by a deploy must ship behind a feature flag. The recommended ramp is 1%, 10%, 50%, then 100%, waiting at least one hour between steps while watching error rates.",
+        "citations": [
+          "feature-flags.md#0",
+          "feature-flags.md#2"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.55, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 0.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 0.5,
+        "retrieval.ndcg@5": 0.63093,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "log-retention",
+      "question": "How long are application logs retained?",
+      "tags": [
+        "data"
+      ],
+      "retrieved": [
+        {
+          "id": "data-retention.md#0",
+          "score": 0.032787
+        },
+        {
+          "id": "data-retention.md#2",
+          "score": 0.032258
+        },
+        {
+          "id": "on-call.md#0",
+          "score": 0.031746
+        },
+        {
+          "id": "backups.md#0",
+          "score": 0.03125
+        },
+        {
+          "id": "api-rate-limits.md#1",
+          "score": 0.015385
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.092,
+        "generation": 0.044,
+        "judge": 0.038
+      },
+      "answer": {
+        "text": "Application logs are retained for 30 days in hot storage and then archived to cold storage for a total of 400 days. Logs must never contain passwords, API tokens or full payment card numbers; the log pipeline redacts known token formats automatically.",
+        "citations": [
+          "data-retention.md#0"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 4,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.44, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.75,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "erasure-window",
+      "question": "How long does it take to fully erase a closed account's personal data, including backups?",
+      "tags": [
+        "data",
+        "multi-doc"
+      ],
+      "retrieved": [
+        {
+          "id": "data-retention.md#1",
+          "score": 0.032787
+        },
+        {
+          "id": "api-rate-limits.md#2",
+          "score": 0.031754
+        },
+        {
+          "id": "on-call.md#0",
+          "score": 0.031514
+        },
+        {
+          "id": "feature-flags.md#2",
+          "score": 0.031498
+        },
+        {
+          "id": "backups.md#0",
+          "score": 0.030366
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.12,
+        "generation": 0.048,
+        "judge": 0.039
+      },
+      "answer": {
+        "text": "When a customer closes their account, their personal data is deleted from primary databases within 30 days. Backups containing that data age out within a further 35 days, so complete erasure takes at most 65 days.",
+        "citations": [
+          "data-retention.md#1"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.57, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 0.5,
+        "retrieval.recall@3": 0.5,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 0.932778,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "rate-limit-standard",
+      "question": "What is the API rate limit on the standard plan?",
+      "tags": [
+        "api"
+      ],
+      "retrieved": [
+        {
+          "id": "api-rate-limits.md#0",
+          "score": 0.032787
+        },
+        {
+          "id": "api-rate-limits.md#1",
+          "score": 0.032258
+        },
+        {
+          "id": "api-rate-limits.md#2",
+          "score": 0.031746
+        },
+        {
+          "id": "deployments.md#1",
+          "score": 0.03125
+        },
+        {
+          "id": "authentication.md#0",
+          "score": 0.030769
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.087,
+        "generation": 0.043,
+        "judge": 0.036
+      },
+      "answer": {
+        "text": "The public Atlas API allows 600 requests per minute per API key on the standard plan and 3,000 requests per minute on the enterprise plan. When a client exceeds its limit, the API responds with HTTP 429 and a `Retry-After` header giving the number of seconds to wait.",
+        "citations": [
+          "api-rate-limits.md#0",
+          "api-rate-limits.md#1"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 3,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": false,
+        "rationale": "token f1=0.38, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.5,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 0.0
+      }
+    },
+    {
+      "id": "rate-limit-429",
+      "question": "What should a client do when it receives HTTP 429?",
+      "tags": [
+        "api"
+      ],
+      "retrieved": [
+        {
+          "id": "api-rate-limits.md#1",
+          "score": 0.032787
+        },
+        {
+          "id": "deployments.md#1",
+          "score": 0.032002
+        },
+        {
+          "id": "on-call.md#1",
+          "score": 0.031025
+        },
+        {
+          "id": "backups.md#2",
+          "score": 0.016129
+        },
+        {
+          "id": "backups.md#1",
+          "score": 0.015625
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.085,
+        "generation": 0.042,
+        "judge": 0.037
+      },
+      "answer": {
+        "text": "When a client exceeds its limit, the API responds with HTTP 429 and a `Retry-After` header giving the number of seconds to wait. Production rollouts start as a canary that receives 5% of traffic for 15 minutes.",
+        "citations": [
+          "api-rate-limits.md#1",
+          "deployments.md#1"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 3,
+        "groundedness": 5,
+        "completeness": 3,
+        "passed": false,
+        "rationale": "token f1=0.29, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.5,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 0.5,
+        "judge.pass_rate": 0.0
+      }
+    },
+    {
+      "id": "key-rotation",
+      "question": "How often should API keys be rotated, and is rotation zero-downtime?",
+      "tags": [
+        "auth"
+      ],
+      "retrieved": [
+        {
+          "id": "authentication.md#1",
+          "score": 0.032787
+        },
+        {
+          "id": "authentication.md#0",
+          "score": 0.032258
+        },
+        {
+          "id": "on-call.md#0",
+          "score": 0.031746
+        },
+        {
+          "id": "on-call.md#1",
+          "score": 0.03125
+        },
+        {
+          "id": "api-rate-limits.md#0",
+          "score": 0.030769
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.102,
+        "generation": 0.049,
+        "judge": 0.04
+      },
+      "answer": {
+        "text": "Customers should rotate API keys at least every 180 days. Rotation is zero-downtime: a workspace can hold two active keys at once, so the new key can be deployed before the old key is revoked.",
+        "citations": [
+          "authentication.md#1"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.67, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "mtls-cert-lifetime",
+      "question": "How long are internal service mTLS certificates valid?",
+      "tags": [
+        "auth"
+      ],
+      "retrieved": [
+        {
+          "id": "authentication.md#2",
+          "score": 0.032787
+        },
+        {
+          "id": "feature-flags.md#0",
+          "score": 0.031746
+        },
+        {
+          "id": "feature-flags.md#1",
+          "score": 0.030769
+        },
+        {
+          "id": "deployments.md#3",
+          "score": 0.030331
+        },
+        {
+          "id": "on-call.md#0",
+          "score": 0.030214
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.101,
+        "generation": 0.045,
+        "judge": 0.037
+      },
+      "answer": {
+        "text": "Internal services authenticate to each other with short-lived mTLS certificates issued by the Atlas internal CA. Certificates are valid for 24 hours and are renewed automatically by the sidecar 6 hours before expiry.",
+        "citations": [
+          "authentication.md#2"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 5,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": true,
+        "rationale": "token f1=0.57, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 1.0,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 1.0,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 1.0
+      }
+    },
+    {
+      "id": "rpo-rto",
+      "question": "What are the RPO and RTO for primary databases?",
+      "tags": [
+        "backups"
+      ],
+      "retrieved": [
+        {
+          "id": "backups.md#1",
+          "score": 0.032787
+        },
+        {
+          "id": "backups.md#0",
+          "score": 0.031754
+        },
+        {
+          "id": "data-retention.md#1",
+          "score": 0.031746
+        },
+        {
+          "id": "on-call.md#0",
+          "score": 0.031514
+        },
+        {
+          "id": "backups.md#2",
+          "score": 0.030777
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.092,
+        "generation": 0.041,
+        "judge": 0.034
+      },
+      "answer": {
+        "text": "The recovery point objective (RPO) for primary databases is 5 minutes and the recovery time objective (RTO) is 4 hours. Primary Postgres databases take a full snapshot every 24 hours and stream write-ahead logs continuously, which allows point-in-time recovery to any second within the last 35 days.",
+        "citations": [
+          "backups.md#1",
+          "backups.md#0"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 3,
+        "groundedness": 5,
+        "completeness": 5,
+        "passed": false,
+        "rationale": "token f1=0.33, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 1.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 1.0,
+        "retrieval.ndcg@5": 1.0,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 1.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.5,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 1.0,
+        "judge.pass_rate": 0.0
+      }
+    },
+    {
+      "id": "restore-drill-miss",
+      "question": "What happens if a quarterly restore drill misses the recovery time objective?",
+      "tags": [
+        "backups",
+        "multi-hop"
+      ],
+      "retrieved": [
+        {
+          "id": "backups.md#1",
+          "score": 0.032522
+        },
+        {
+          "id": "backups.md#2",
+          "score": 0.032522
+        },
+        {
+          "id": "on-call.md#1",
+          "score": 0.031746
+        },
+        {
+          "id": "backups.md#0",
+          "score": 0.03101
+        },
+        {
+          "id": "authentication.md#0",
+          "score": 0.030303
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.124,
+        "generation": 0.041,
+        "judge": 0.034
+      },
+      "answer": {
+        "text": "The recovery point objective (RPO) for primary databases is 5 minutes and the recovery time objective (RTO) is 4 hours. A restore drill is run every quarter: a randomly chosen production database is restored into an isolated environment and verified with row-count and checksum comparisons.",
+        "citations": [
+          "backups.md#1",
+          "backups.md#2"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "judge": {
+        "correctness": 2,
+        "groundedness": 5,
+        "completeness": 3,
+        "passed": false,
+        "rationale": "token f1=0.12, grounded=1.00"
+      },
+      "metrics": {
+        "retrieval.recall@1": 0.0,
+        "retrieval.recall@3": 1.0,
+        "retrieval.recall@5": 1.0,
+        "retrieval.mrr": 0.5,
+        "retrieval.ndcg@5": 0.63093,
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": 0.5,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": 0.0,
+        "generation.abstention_accuracy": 1.0,
+        "judge.correctness": 0.25,
+        "judge.groundedness": 1.0,
+        "judge.completeness": 0.5,
+        "judge.pass_rate": 0.0
+      }
+    },
+    {
+      "id": "unanswerable-office",
+      "question": "Which city hosts the Atlas team's annual offsite?",
+      "tags": [
+        "unanswerable"
+      ],
+      "retrieved": [
+        {
+          "id": "incident-response.md#0",
+          "score": 0.032266
+        },
+        {
+          "id": "authentication.md#0",
+          "score": 0.031778
+        },
+        {
+          "id": "deployments.md#3",
+          "score": 0.031258
+        },
+        {
+          "id": "feature-flags.md#0",
+          "score": 0.031054
+        },
+        {
+          "id": "api-rate-limits.md#0",
+          "score": 0.030777
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.091,
+        "generation": 0.038
+      },
+      "answer": {
+        "text": "Atlas classifies incidents by customer impact, not by the component that failed. API keys are created in the Atlas console and are scoped to a single workspace.",
+        "citations": [
+          "incident-response.md#0",
+          "authentication.md#0"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "metrics": {
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": null,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": null,
+        "generation.abstention_accuracy": 0.0
+      }
+    },
+    {
+      "id": "unanswerable-pricing",
+      "question": "How much does the enterprise plan cost per seat?",
+      "tags": [
+        "unanswerable"
+      ],
+      "retrieved": [
+        {
+          "id": "api-rate-limits.md#0",
+          "score": 0.032787
+        },
+        {
+          "id": "api-rate-limits.md#2",
+          "score": 0.032258
+        },
+        {
+          "id": "feature-flags.md#2",
+          "score": 0.030366
+        },
+        {
+          "id": "on-call.md#1",
+          "score": 0.028958
+        },
+        {
+          "id": "authentication.md#2",
+          "score": 0.015873
+        }
+      ],
+      "timings_ms": {
+        "retrieval": 0.091,
+        "generation": 0.041
+      },
+      "answer": {
+        "text": "The public Atlas API allows 600 requests per minute per API key on the standard plan and 3,000 requests per minute on the enterprise plan. Enterprise customers can request a higher limit through their account manager.",
+        "citations": [
+          "api-rate-limits.md#0",
+          "api-rate-limits.md#2"
+        ],
+        "abstained": false,
+        "model": "fake:extractive"
+      },
+      "metrics": {
+        "generation.citation_validity": 1.0,
+        "generation.citation_precision": null,
+        "generation.cited_when_answering": 1.0,
+        "generation.fact_recall": null,
+        "generation.abstention_accuracy": 0.0
+      }
+    }
+  ]
+}

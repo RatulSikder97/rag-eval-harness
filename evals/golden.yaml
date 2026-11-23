@@ -1,0 +1,158 @@
+name: atlas-handbook-v1
+description: >
+  Golden set for the bundled fictional "Atlas" engineering handbook (corpus/).
+  Relevance is labelled by document + evidence string, so it survives re-chunking.
+
+items:
+  - id: sev1-definition
+    question: What counts as a SEV1 incident?
+    relevant:
+      - { doc: incident-response.md, contains: "SEV1: a full outage", grade: 2 }
+    reference_answer: A SEV1 is a full outage of checkout, login or the public API, or any confirmed data loss.
+    must_include: [checkout, data loss]
+    tags: [incidents]
+
+  - id: status-update-cadence
+    question: How often does the communications lead post status updates during an incident?
+    relevant:
+      - { doc: incident-response.md, contains: "every 30 minutes", grade: 2 }
+    reference_answer: Every 30 minutes in the #atlas-status channel until the incident is resolved.
+    must_include: [30 minutes]
+    tags: [incidents]
+
+  - id: postmortem-deadline
+    question: When is the postmortem draft due after a SEV2 incident?
+    relevant:
+      - { doc: incident-response.md, contains: "5 business days", grade: 2 }
+    reference_answer: A blameless postmortem draft is due within 5 business days of resolution.
+    must_include: [5 business days]
+    tags: [incidents]
+
+  - id: page-escalation
+    question: What happens if the primary on-call engineer does not acknowledge a page?
+    relevant:
+      - { doc: on-call.md, contains: "escalates to the secondary", grade: 2 }
+    reference_answer: After 5 minutes the page escalates to the secondary, and after a further 10 minutes to the engineering manager.
+    must_include: [secondary, engineering manager]
+    tags: [on-call]
+
+  - id: rotation-handover
+    question: When does the on-call rotation hand over?
+    relevant:
+      - { doc: on-call.md, contains: "Monday at 10:00 UTC", grade: 2 }
+    reference_answer: Every Monday at 10:00 UTC; rotations are one week long.
+    must_include: [Monday, 10:00 UTC]
+    tags: [on-call]
+
+  - id: canary-policy
+    question: How much traffic does a production canary receive and for how long?
+    relevant:
+      - { doc: deployments.md, contains: "5% of traffic", grade: 2 }
+    reference_answer: The canary receives 5% of traffic for 15 minutes before automatic promotion or rollback.
+    must_include: [5%, 15 minutes]
+    tags: [deploys]
+
+  - id: deploy-freeze
+    question: When are production deploys frozen?
+    relevant:
+      - { doc: deployments.md, contains: "frozen from Friday", grade: 2 }
+    reference_answer: From Friday 16:00 UTC until Monday 08:00 UTC, and during announced company-wide freeze windows.
+    must_include: [Friday 16:00 UTC]
+    tags: [deploys]
+
+  - id: rollback-approval
+    question: Do I need approval to roll back a production deploy?
+    relevant:
+      - { doc: deployments.md, contains: "roll back a production deploy at any time", grade: 2 }
+    reference_answer: No. Any engineer may roll back at any time with atlas deploy rollback; only rolling forward during an incident needs approval.
+    must_include: [any time]
+    tags: [deploys]
+
+  - id: flag-expiry
+    question: When do release feature flags expire?
+    relevant:
+      - { doc: feature-flags.md, contains: "30 days after they reach 100%", grade: 2 }
+    reference_answer: Release flags expire 30 days after reaching 100% rollout; ops-tagged kill switches are exempt.
+    must_include: [30 days]
+    tags: [flags]
+
+  - id: flag-ramp
+    question: What is the recommended feature flag rollout ramp?
+    relevant:
+      - { doc: feature-flags.md, contains: "1%, 10%, 50%, then 100%", grade: 2 }
+    reference_answer: Ramp 1%, 10%, 50%, then 100%, waiting at least one hour between steps.
+    must_include: [1%, 50%]
+    tags: [flags]
+
+  - id: log-retention
+    question: How long are application logs retained?
+    relevant:
+      - { doc: data-retention.md, contains: "Application logs are retained", grade: 2 }
+    reference_answer: 30 days in hot storage, then archived to cold storage for a total of 400 days.
+    must_include: [30 days, 400 days]
+    tags: [data]
+
+  - id: erasure-window
+    question: How long does it take to fully erase a closed account's personal data, including backups?
+    relevant:
+      - { doc: data-retention.md, contains: "at most 65 days", grade: 2 }
+      - { doc: backups.md, contains: "last 35 days", grade: 1 }
+    reference_answer: At most 65 days - 30 days to delete from primary databases plus up to 35 days for backups to age out.
+    must_include: [65 days]
+    tags: [data, multi-doc]
+
+  - id: rate-limit-standard
+    question: What is the API rate limit on the standard plan?
+    relevant:
+      - { doc: api-rate-limits.md, contains: "600 requests per minute", grade: 2 }
+    reference_answer: 600 requests per minute per API key.
+    must_include: ["600"]
+    tags: [api]
+
+  - id: rate-limit-429
+    question: What should a client do when it receives HTTP 429?
+    relevant:
+      - { doc: api-rate-limits.md, contains: "Retry-After", grade: 2 }
+    reference_answer: Wait for the number of seconds in the Retry-After header and back off exponentially with jitter instead of retrying immediately.
+    must_include: [Retry-After]
+    tags: [api]
+
+  - id: key-rotation
+    question: How often should API keys be rotated, and is rotation zero-downtime?
+    relevant:
+      - { doc: authentication.md, contains: "every 180 days", grade: 2 }
+    reference_answer: At least every 180 days; it is zero-downtime because a workspace can hold two active keys at once.
+    must_include: [180 days]
+    tags: [auth]
+
+  - id: mtls-cert-lifetime
+    question: How long are internal service mTLS certificates valid?
+    relevant:
+      - { doc: authentication.md, contains: "valid for 24 hours", grade: 2 }
+    reference_answer: 24 hours, renewed automatically by the sidecar 6 hours before expiry.
+    must_include: [24 hours]
+    tags: [auth]
+
+  - id: rpo-rto
+    question: What are the RPO and RTO for primary databases?
+    relevant:
+      - { doc: backups.md, contains: "recovery point objective", grade: 2 }
+    reference_answer: The RPO is 5 minutes and the RTO is 4 hours.
+    must_include: [5 minutes, 4 hours]
+    tags: [backups]
+
+  - id: restore-drill-miss
+    question: What happens if a quarterly restore drill misses the recovery time objective?
+    relevant:
+      - { doc: backups.md, contains: "treated as a SEV3", grade: 2 }
+    reference_answer: A drill that misses the RTO is treated as a SEV3 incident.
+    must_include: [SEV3]
+    tags: [backups, multi-hop]
+
+  - id: unanswerable-office
+    question: Which city hosts the Atlas team's annual offsite?
+    tags: [unanswerable]
+
+  - id: unanswerable-pricing
+    question: How much does the enterprise plan cost per seat?
+    tags: [unanswerable]
